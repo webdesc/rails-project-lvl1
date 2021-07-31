@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "lib for generate forms"
   spec.homepage      = "https://github.com/webdesc/rails-project-lvl1"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.0")
 
   spec.metadata["allowed_push_host"] = "https://github.com/webdesc/rails-project-lvl1"
 

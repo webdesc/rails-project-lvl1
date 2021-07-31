@@ -14,8 +14,6 @@ module HexletCode
       return build_pair_tag(name, options, &block) if @pair_tags.include? name
     end
 
-    private
-
     def self.build_single_tag(name, options)
       "<#{name}#{create_options(options)}>"
     end
