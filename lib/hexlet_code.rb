@@ -9,24 +9,32 @@ module HexletCode
     @single_tags = %w[img br input]
     @pair_tags = %w[a label div span]
 
-    def self.build(name, options = {}, &block)
-      return build_single_tag(name, options) if @single_tags.include? name
-      return build_pair_tag(name, options, &block) if @pair_tags.include? name
+    class << self
+      def build(name, options = {}, &block)
+        return build_single_tag(name, options) if @single_tags.include? name
+        return build_pair_tag(name, options, &block) if @pair_tags.include? name
+      end
+
+      def build_single_tag(name, options)
+        "<#{name}#{create_options(options)}>"
+      end
+
+      def build_pair_tag(name, options, &block)
+        "<#{name}#{create_options(options)}>#{block.call}</#{name}>"
+      end
+
+      def create_options(options)
+        return "" if options.empty?
+
+        options_array = options.map { |key, value| "#{key}=\"#{value}\"" }
+        " #{options_array.join " "}"
+      end
     end
+  end
 
-    def self.build_single_tag(name, options)
-      "<#{name}#{create_options(options)}>"
-    end
-
-    def self.build_pair_tag(name, options, &block)
-      "<#{name}#{create_options(options)}>#{block.call}</#{name}>"
-    end
-
-    def self.create_options(options)
-      return "" if options.empty?
-
-      options_array = options.map { |key, value| "#{key}=\"#{value}\"" }
-      " #{options_array.join " "}"
+  class << self
+    def form_for(_user, options = {})
+      "<form action=\"#{options[:url] || "#"}\" method=\"post\"></form>"
     end
   end
 end
