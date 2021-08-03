@@ -39,13 +39,15 @@ class HexletCodeTest < Minitest::Test
 
   def test_create_form_without_action
     expected = '<form action="#" method="post"></form>'
-    actual = HexletCode.form_for @user do |i|; end
+    actual = HexletCode.form_for @user do |i|
+    end
     assert_equal expected, actual
   end
 
   def test_create_form_with_action
     expected = '<form action="/users" method="post"></form>'
-    actual = HexletCode.form_for @user, url: "/users" do |i|; end
+    actual = HexletCode.form_for @user, url: "/users" do |i|
+    end
     assert_equal expected, actual
   end
 end
