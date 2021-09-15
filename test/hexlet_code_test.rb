@@ -3,7 +3,7 @@
 require "test_helper"
 
 class HexletCodeTest < Minitest::Test
-  User = Struct.new(:name, :job, keyword_init: true)
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
 
   def setup
     @user = User.new name: "rob"
@@ -47,6 +47,17 @@ class HexletCodeTest < Minitest::Test
   def test_create_form_with_action
     expected = '<form action="/users" method="post"></form>'
     actual = HexletCode.form_for @user, url: "/users" do |i|
+    end
+    assert_equal expected, actual
+  end
+
+  def test_create_form_fields
+    user = User.new name: "rob", job: "hexlet", gender: "m"
+    expected = File.new("./test/fixtures/mock-form.html").read.chomp
+    actual = HexletCode.form_for user, url: "/users" do |f|
+      f.input :name
+      f.input :job, as: :text
+      f.input :gender, as: :select, collection: %w[m f]
     end
     assert_equal expected, actual
   end
