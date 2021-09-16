@@ -13,7 +13,7 @@ module HexletCode
         cols: 20,
         rows: 40
       }
-    }
+    }.freeze
 
     class << self
       def build(name, options = {}, &block)
