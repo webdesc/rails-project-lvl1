@@ -17,15 +17,20 @@ module HexletCode
     def input(attr_name, options = {})
       type = options.fetch(:as, :input)
       collection = options.fetch(:collection, [])
-      value = data[attr_name] || ""
+      value = data[attr_name] || nil
       attrs = { name: attr_name }
-      fields << factory_input_block(type, attrs, value, collection)
+      fields << create_label(attr_name) + factory_input_block(type, attrs, value, collection)
+    end
+
+    def submit(label = "Save")
+      attrs = { type: "submit", value: label, name: "commit" }
+      fields << HexletCode::Tag.build("input", attrs)
     end
 
     def factory_input_block(type, attrs, value, collection)
       case type
       when :input
-        HexletCode::Inputs::InputBlock.input(attrs.merge({ value: value }))
+        HexletCode::Inputs::InputBlock.input(attrs.merge((value.nil? ? {} : { value: value })))
       when :text
         HexletCode::Inputs::TextBlock.input(attrs, value)
       when :select
@@ -33,6 +38,10 @@ module HexletCode
       else
         "Not implemented"
       end
+    end
+
+    def create_label(name)
+      HexletCode::Tag.build("label", { for: name }) { name.capitalize }
     end
   end
 end

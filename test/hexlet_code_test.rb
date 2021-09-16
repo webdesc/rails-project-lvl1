@@ -61,4 +61,15 @@ class HexletCodeTest < Minitest::Test
     end
     assert_equal expected, actual
   end
+
+  def test_create_form_fields_submit
+    user = User.new job: "hexlet"
+    expected = File.new("./test/fixtures/mock-form-submit.html").read.chomp
+    actual = HexletCode.form_for user do |f|
+      f.input :name
+      f.input :job
+      f.submit
+    end
+    assert_equal expected, actual
+  end
 end
