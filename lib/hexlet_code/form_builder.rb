@@ -31,8 +31,6 @@ module HexletCode
         HexletCode::Inputs::Select.input(attrs, value, collection)
       when :label
         HexletCode::Tag.build("label", attrs) { attrs[:for].capitalize }
-      else
-        "Not implemented"
       end
     end
   end
