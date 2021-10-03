@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "hexlet_code/inputs"
+require "hexlet_code/tag"
 
 module HexletCode
   class FormBuilder
