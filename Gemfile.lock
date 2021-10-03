@@ -6,7 +6,18 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (6.1.4.1)
+      activesupport (= 6.1.4.1)
+    activesupport (6.1.4.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     ast (2.4.2)
+    concurrent-ruby (1.1.9)
+    i18n (1.8.10)
+      concurrent-ruby (~> 1.0)
     minitest (5.14.4)
     parallel (1.20.1)
     parser (3.0.2.0)
@@ -27,16 +38,20 @@ GEM
     rubocop-ast (1.8.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activemodel
   hexlet_code!
   minitest (~> 5.0)
   rake (~> 13.0)
   rubocop (~> 0.80)
 
 BUNDLED WITH
-   2.2.3
+   2.2.26

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+# require "hexlet_code/tag"
 
 class HexletCodeTest < Minitest::Test
   User = Struct.new(:name, :job, :gender, keyword_init: true)

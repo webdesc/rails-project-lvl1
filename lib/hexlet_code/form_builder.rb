@@ -4,44 +4,36 @@ require "hexlet_code/inputs"
 
 module HexletCode
   class FormBuilder
-    attr_reader :data
-    attr_accessor :fields
+    attr_reader :config
 
     include HexletCode::Inputs
 
-    def initialize(data)
-      @data = data
-      @fields = []
+    def initialize() end
+
+    def create(config)
+      method, params, fields = config.values_at(:method, :params, :fields)
+      tags = fields.map do |field|
+        type, attrs, value, collection = field.values_at(:type, :attrs, :value, :collection)
+        factory_input(type, attrs, value, collection)
+      end
+      "<form action=\"#{params[:url] || "#"}\" method=\"#{method}\">#{tags.join("")}</form>"
     end
 
-    def input(attr_name, options = {})
-      type = options.fetch(:as, :input)
-      collection = options.fetch(:collection, [])
-      value = data[attr_name] || nil
-      attrs = { name: attr_name }
-      fields << create_label(attr_name) + factory_input_block(type, attrs, value, collection)
-    end
+    private
 
-    def submit(label = "Save")
-      attrs = { type: "submit", value: label, name: "commit" }
-      fields << HexletCode::Tag.build("input", attrs)
-    end
-
-    def factory_input_block(type, attrs, value, collection)
+    def factory_input(type, attrs, value, collection)
       case type
       when :input
-        HexletCode::Inputs::InputBlock.input(attrs.merge((value.nil? ? {} : { value: value })))
+        HexletCode::Inputs::Input.input(attrs.merge((value.nil? ? {} : { value: value })))
       when :text
-        HexletCode::Inputs::TextBlock.input(attrs, value)
+        HexletCode::Inputs::Text.input(attrs, value)
       when :select
-        HexletCode::Inputs::SelectBlock.input(attrs, value, collection)
+        HexletCode::Inputs::Select.input(attrs, value, collection)
+      when :label
+        HexletCode::Tag.build("label", attrs) { attrs[:for].capitalize }
       else
         "Not implemented"
       end
-    end
-
-    def create_label(name)
-      HexletCode::Tag.build("label", { for: name }) { name.capitalize }
     end
   end
 end

@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 require_relative "hexlet_code/version"
+require "hexlet_code/form"
 require "hexlet_code/form_builder"
 
 module HexletCode
   class Error < StandardError; end
 
-  class << self
-    def form_for(user, options = {})
-      fb = HexletCode::FormBuilder.new user
-      fields = yield(fb) if block_given?
-      "<form action=\"#{options[:url] || "#"}\" method=\"post\">#{fields ? fields.join("") : ""}</form>"
-    end
+  def self.form_for(user, options = {}, &block)
+    fb = HexletCode::FormBuilder.new
+    form = HexletCode::Form.new user, options, &block
+    yield(form) if block_given?
+    fb.create(form.config)
   end
 end
