@@ -23,14 +23,15 @@ Or install it yourself as:
     $ gem install hexlet_code
 
 ## Usage
-    Create an entity by using Struct:
+
+Create an entity by using Struct:
 
     ```
     Entity = Struct.new(:name, :job, :gender, keyword_init: true)
     entity = Entity.new name: "rob", job: "hexlet", gender: "m"
     ```
 
-    And then generate the form for this entity:
+And then generate the form for this entity:
 
     ```
     HexletCode.form_for entity, url: "/users" do |f|
