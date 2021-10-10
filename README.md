@@ -1,6 +1,5 @@
-[main](https://github.com/webdesc/rails-project-lvl1/actions/workflows/main.yml/badge.svg)]
-
-[hexlet-check](https://github.com/webdesc/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)]
+[![main](https://github.com/webdesc/rails-project-lvl1/actions/workflows/main.yml/badge.svg)](https://github.com/webdesc/rails-project-lvl1/actions/workflows/main.yml)
+[![hexlet-check](https://github.com/webdesc/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/webdesc/rails-project-lvl1/actions/workflows/hexlet-check.yml)
 
 # HexletCode
 
