@@ -1,6 +1,6 @@
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![hexlet-check](https://github.com/webdesc/rails-project-lvl1/blob/main/.github/workflows/hexlet-check.yml)](https://github.com/webdesc/rails-project-lvl1/actions/workflows/hexlet-check.yml)
 
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
+[![hexlet-check](https://github.com/webdesc/rails-project-lvl1/blob/main/.github/workflows/main.yml)](https://github.com/webdesc/rails-project-lvl1/actions/workflows/main.yml)
 
 # HexletCode
 
