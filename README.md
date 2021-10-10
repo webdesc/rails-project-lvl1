@@ -4,9 +4,7 @@
 
 # HexletCode
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet_code`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Гем HexletCode позволяет задавать конфигурацию формы и генерировать ее в html формате
 
 ## Installation
 
@@ -25,8 +23,23 @@ Or install it yourself as:
     $ gem install hexlet_code
 
 ## Usage
+    Create an entity by using Struct:
 
-TODO: Write usage instructions here
+    ```
+    Entity = Struct.new(:name, :job, :gender, keyword_init: true)
+    entity = Entity.new name: "rob", job: "hexlet", gender: "m"
+    ```
+
+    And then generate the form for this entity:
+
+    ```
+    HexletCode.form_for entity, url: "/users" do |f|
+      f.input :name
+      f.input :job, as: :text
+      f.input :gender, as: :select, collection: %w[m f]
+      f.submit
+    end
+    ```
 
 ## Development
 
