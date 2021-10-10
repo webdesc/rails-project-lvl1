@@ -5,8 +5,18 @@ require "hexlet_code/tag"
 module HexletCode
   module Inputs
     class Input
-      def self.input(attrs)
-        HexletCode::Tag.build("input", attrs)
+      attr_reader :input
+
+      def initialize(attrs)
+        @input = {
+          type: "input",
+          attrs: attrs
+        }
+      end
+
+      def render
+        type, attrs = input.values_at(:type, :attrs)
+        HexletCode::Tag.build(type, attrs)
       end
     end
   end

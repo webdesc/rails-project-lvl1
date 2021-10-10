@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
+require "hexlet_code/inputs"
+require "hexlet_code/label"
+
 module HexletCode
   class Form
     attr_reader :entity
     attr_accessor :config
+
+    include HexletCode::Inputs
 
     def initialize(entity, form_params = {})
       @entity = entity
@@ -29,12 +34,16 @@ module HexletCode
     end
 
     def create_field(type, attrs, value = nil, collection = [])
-      {
-        type: type,
-        attrs: attrs,
-        value: value,
-        collection: collection
-      }
+      case type
+      when :input
+        HexletCode::Inputs::Input.new(attrs.merge((value.nil? ? {} : { value: value })))
+      when :text
+        HexletCode::Inputs::Text.new(attrs, value)
+      when :select
+        HexletCode::Inputs::Select.new(attrs, value, collection)
+      when :label
+        HexletCode::Label.new(attrs)
+      end
     end
   end
 end
