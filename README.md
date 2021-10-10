@@ -26,17 +26,17 @@ Or install it yourself as:
 
 Create an entity by using Struct:
 
-    ```Entity = Struct.new(:name, :job, :gender, keyword_init: true)
-    entity = Entity.new name: "rob", job: "hexlet", gender: "m"```
+    Entity = Struct.new(:name, :job, :gender, keyword_init: true)
+    entity = Entity.new name: "rob", job: "hexlet", gender: "m"
 
 And then generate the form for this entity:
 
-    ```HexletCode.form_for entity, url: "/users" do |f|
+    HexletCode.form_for entity, url: "/users" do |f|
       f.input :name
       f.input :job, as: :text
       f.input :gender, as: :select, collection: %w[m f]
       f.submit
-    end```
+    end
 
 ## Development
 
