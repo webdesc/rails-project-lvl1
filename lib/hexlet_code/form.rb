@@ -20,10 +20,11 @@ module HexletCode
     end
 
     def input(attr_name, options = {})
+      custom_attrs = options.fetch(:attrs, {})
       type = options.fetch(:as, :input)
       collection = options.fetch(:collection, [])
       value = entity[attr_name] || nil
-      attrs = { name: attr_name }
+      attrs = custom_attrs.merge({ name: attr_name })
       config[:fields] << create_field(:label, { for: attr_name })
       config[:fields] << create_field(type, attrs, value, collection)
     end

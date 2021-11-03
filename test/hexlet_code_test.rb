@@ -38,6 +38,12 @@ class HexletCodeTest < Minitest::Test
     assert_equal expected, actual
   end
 
+  def test_create_textarea
+    expected = '<textarea cols="666" rows="555">value</textarea>'
+    actual = HexletCode::Tag.build("textarea", cols: "666", rows: "555") { "value" }
+    assert_equal expected, actual
+  end
+
   def test_create_form_without_action
     expected = '<form action="#" method="post"></form>'
     actual = HexletCode.form_for @user do |i|
@@ -57,7 +63,7 @@ class HexletCodeTest < Minitest::Test
     expected = File.new("./test/fixtures/mock-form.html").read.chomp
     actual = HexletCode.form_for user, url: "/users" do |f|
       f.input :name
-      f.input :job, as: :text
+      f.input :job, as: :text, attrs: { cols: "200", rows: "400" }
       f.input :gender, as: :select, collection: %w[m f]
     end
     assert_equal expected, actual
