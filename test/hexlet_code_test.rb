@@ -63,7 +63,7 @@ class HexletCodeTest < Minitest::Test
     expected = File.new("./test/fixtures/mock-form.html").read.chomp
     actual = HexletCode.form_for user, url: "/users" do |f|
       f.input :name
-      f.input :job, as: :text, attrs: { cols: "200", rows: "400" }
+      f.input :job, as: :text, cols: "200", rows: "400"
       f.input :gender, as: :select, collection: %w[m f]
     end
     assert_equal expected, actual
