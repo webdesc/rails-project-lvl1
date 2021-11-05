@@ -5,8 +5,7 @@ require "hexlet_code/label"
 
 module HexletCode
   class Form
-    attr_reader :entity
-    attr_accessor :config
+    attr_accessor :entity, :config
 
     include HexletCode::Inputs
 
