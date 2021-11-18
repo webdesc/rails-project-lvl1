@@ -22,7 +22,7 @@ module HexletCode
       tag_attrs = options.except(:as, :collection)
       type = options.fetch(:as, :input)
       collection = options.fetch(:collection, [])
-      value = entity[attr_name]
+      value = entity.public_send(attr_name)
       attrs = tag_attrs.merge({ name: attr_name })
       config[:fields] << create_field(:label, { for: attr_name })
       config[:fields] << create_field(type, attrs, value, collection)
