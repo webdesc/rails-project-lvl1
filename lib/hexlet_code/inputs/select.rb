@@ -26,7 +26,7 @@ module HexletCode
       private
 
       def create_select_options(collection, selected)
-        collection.map { |i| "<option value=\"#{i}\"#{i == selected ? ' selected' : ''}>#{i}</option>" }.join ''
+        collection.map { |i| "<option value=\"#{i}\"#{i == selected ? ' selected' : ''}>#{i}</option>" }.join
       end
     end
   end

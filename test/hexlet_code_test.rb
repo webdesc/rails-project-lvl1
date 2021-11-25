@@ -44,20 +44,6 @@ class HexletCodeTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_create_form_without_action
-    expected = '<form action="#" method="post"></form>'
-    actual = HexletCode.form_for @user do |i|
-    end
-    assert_equal expected, actual
-  end
-
-  def test_create_form_with_action
-    expected = '<form action="/users" method="post"></form>'
-    actual = HexletCode.form_for @user, url: '/users' do |i|
-    end
-    assert_equal expected, actual
-  end
-
   def test_create_form_fields
     user = User.new name: 'rob', job: 'hexlet', gender: 'm'
     expected = File.new('./test/fixtures/mock-form.html').read.chomp

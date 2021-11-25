@@ -8,7 +8,7 @@ module HexletCode
     def self.render(form)
       method, params, fields = form.values_at(:method, :params, :fields)
       tags = fields.map(&:render)
-      "<form action=\"#{params[:url] || '#'}\" method=\"#{method}\">#{tags.join('')}</form>"
+      "<form action=\"#{params[:url] || '#'}\" method=\"#{method}\">#{tags.join}</form>"
     end
   end
 end
