@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require "hexlet_code/inputs"
-require "hexlet_code/label"
+require 'hexlet_code/inputs'
+require 'hexlet_code/label'
 
 module HexletCode
+  # Class to create form
   class Form
     attr_accessor :entity, :config
 
@@ -12,7 +13,7 @@ module HexletCode
     def initialize(entity, form_params = {})
       @entity = entity
       @config = {
-        method: "post",
+        method: 'post',
         params: form_params,
         fields: []
       }
@@ -28,8 +29,8 @@ module HexletCode
       config[:fields] << create_field(type, attrs, value, collection)
     end
 
-    def submit(label = "Save")
-      attrs = { type: "submit", value: label, name: "commit" }
+    def submit(label = 'Save')
+      attrs = { type: 'submit', value: label, name: 'commit' }
       config[:fields] << create_field(:input, attrs)
     end
 

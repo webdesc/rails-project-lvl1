@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-require "hexlet_code/tag"
+require 'hexlet_code/tag'
 
 module HexletCode
   module Inputs
+    # Class to render form input
     class Input
       attr_reader :input
 
       def initialize(attrs)
         @input = {
-          type: "input",
+          type: 'input',
           attrs: attrs
         }
       end

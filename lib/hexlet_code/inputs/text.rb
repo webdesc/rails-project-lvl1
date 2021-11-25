@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-require "hexlet_code/tag"
+require 'hexlet_code/tag'
 
 module HexletCode
   module Inputs
+    # Class to render form textarea
     class Text
       attr_reader :input
 
       def initialize(attrs, value)
         @input = {
-          type: "textarea",
+          type: 'textarea',
           attrs: attrs,
           value: value
         }

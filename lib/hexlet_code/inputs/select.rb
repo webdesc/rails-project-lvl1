@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-require "hexlet_code/tag"
+require 'hexlet_code/tag'
 
 module HexletCode
   module Inputs
+    # Class to render form select with options
     class Select
       attr_reader :input
 
       def initialize(attrs, value, collection)
         @input = {
-          type: "select",
+          type: 'select',
           attrs: attrs,
           value: value,
           collection: collection
@@ -25,7 +26,7 @@ module HexletCode
       private
 
       def create_select_options(collection, selected)
-        collection.map { |i| "<option value=\"#{i}\"#{i == selected ? " selected" : ""}>#{i}</option>" }.join ""
+        collection.map { |i| "<option value=\"#{i}\"#{i == selected ? ' selected' : ''}>#{i}</option>" }.join ''
       end
     end
   end

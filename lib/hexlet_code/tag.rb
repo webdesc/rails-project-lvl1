@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 module HexletCode
+  # Class to build tag
   class Tag
     @single_tags = %w[img br input]
     @pair_tags = %w[a label div span textarea select]
 
     DEFAULT_ATTRS_TAG = {
-      "input" => {
-        type: "text"
+      'input' => {
+        type: 'text'
       },
-      "textarea" => {
+      'textarea' => {
         cols: 20,
         rows: 40
       }
@@ -28,17 +29,17 @@ module HexletCode
       end
 
       def build_pair_tag(name, attrs, &block)
-        content = block_given? ? block.call : ""
+        content = block_given? ? block.call : ''
         default_attrs = get_default_attrs(name)
         full_attrs = default_attrs.merge(attrs)
         "<#{name}#{create_attrs_string(full_attrs)}>#{content}</#{name}>"
       end
 
       def create_attrs_string(options)
-        return "" if options.empty?
+        return '' if options.empty?
 
         options_array = options.map { |key, value| "#{key}=\"#{value}\"" }
-        " #{options_array.join " "}"
+        " #{options_array.join ' '}"
       end
 
       def get_default_attrs(name)
